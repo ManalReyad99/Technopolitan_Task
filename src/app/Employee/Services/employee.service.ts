@@ -1,0 +1,21 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class EmployeeService {
+  auth_token:string='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtdGhhYmV0IiwianRpIjoiM2NjNTliYWEtMmFlOC00N2MwLTk5YTktMWVkMjExZDNkMTRjIiwiZW1haWwiOiJtdGhhYmV0QHRlY2huby1wb2xpdGFuLmNvbSIsInVpZCI6ImZiZDJlNjVkLWExYmQtNGI4MS04MDU3LWE0ZGJiODhlNGQ4MyIsImlwIjoiMTAuMTEuMjguMjQ2IiwiUmVwb3J0cyI6WyJFeHRyYWN0IiwiVmlldyIsIkVkaXQiXSwiTG9jYXRpb25zIjpbIlZpZXciLCJBZGQiLCJFZGl0Il0sIlJvbGVzIjpbIkVkaXQiLCJWaWV3IiwiQWRkIl0sIlVzZXJzIjpbIkVkaXQiLCJWaWV3IiwiQWRkIl0sIlJlc3RhdXJhbnQgUmVzZXJ2YXRpb24iOlsiRWRpdCIsIlZpZXciLCJBZGQiXSwiTWVldGluZyBSb29tcyI6WyJFZGl0IiwiVmlldyIsIkFkZCJdLCJFdmVudHNwYWNlcyI6WyJFZGl0IiwiVmlldyIsIkFkZCJdLCJXb3Jrc3BhY2VzIjpbIkVkaXQiLCJWaWV3IiwiQWRkIl0sIkFzc2lnbmVkIExvY2F0aW9ucyI6IlZpZXciLCJMT1MgU3BhY2VzIjpbIkFkZCIsIlZpZXciLCJFZGl0Il0sIlByb3BlcnR5IE1hbmFnbWVudCBEeW5hbWljIExpc3RzIjpbIkVkaXQiLCJWaWV3IiwiQWRkIl0sIlN5c3RlbSBTZXR0aW5ncyBEeW5hbWljIExpc3RzIjpbIkVkaXQiLCJWaWV3IiwiQWRkIl0sIk1lbWJlcnNoaXAgUHJpY2luZyI6WyJFZGl0IiwiVmlldyIsIkFkZCJdLCJNZW1iZXJzaGlwIEJlbmVmaXQiOlsiRWRpdCIsIlZpZXciLCJBZGQiXSwiUHJvcGVydHkgRGF0YWJhc2UiOiJWaWV3IiwiQ29udGFjdCBpbmZvIjoiVmlldyIsIkxlZ2FsIGFuZCBGaW5hbmNlIERldGFpbHMiOiJWaWV3IiwiQXNzZXRzIjpbIkVkaXQiLCJWaWV3IiwiQWRkIl0sIkxPUyBNZW1iZXJzaGlwcyI6WyJFZGl0IiwiVmlldyIsIkFkZCJdLCJBbGwgTG9jYXRpb25zIjoiVmlldyIsInJvbGVzIjoiU3VwZXJBZG1pbiIsImV4cCI6MTY2NDAxOTQ5MiwiaXNzIjoiQ29yZUlkZW50aXR5IiwiYXVkIjoiQ29yZUlkZW50aXR5VXNlciJ9.v4QgGseqbStqHtzss8C6suf5vvncH1gGBjTyqPdjtMI'
+ headers = new HttpHeaders({
+  'Content-Type': 'application/json',
+  Authorization: `Bearer ${this.auth_token}`,
+});  constructor(private httpClient:HttpClient) { 
+ 
+  }
+  getAllEmployeesData():Observable<any>
+  {
+   return this.httpClient.get<any>(`${environment.BaseAPIURL}`,{ headers:this.headers });
+  }
+}

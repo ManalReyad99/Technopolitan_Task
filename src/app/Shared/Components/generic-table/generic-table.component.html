@@ -1,0 +1,38 @@
+
+<section class="table-info">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-11 col-md-12 col-sm-12 col-12 table-data">
+            <div class="header_fixed ">
+                <table>
+                    <thead>
+                        <tr>
+                            <th *ngFor="let header of tableHeaders">{{header.headerName}}</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let row of tableBodyList  ">
+                            <td *ngFor="let head of tableHeaders">
+                                <div [ngStyle]="{'color': head.headerKey=='Id'? '#b841f8' : '#58575a'}">
+                                    {{row[head.headerKey]}}
+                                </div>
+                            </td>
+
+
+
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-lg-1 col-md-12 col-sm-12 col-12 download-and-filter-btns">
+            <div class="btns-box">
+                <a href="" class="btn"><img src="assets/filterIcon.jpeg" alt=""></a>
+                <a href="" class="btn"><img src="assets/downloadIcon.jpeg" alt=""></a>
+            </div>
+        </div>
+    </div>
+</div>
+</section>
